@@ -1,0 +1,15 @@
+{
+  "name": "ships-game",
+  "version": "0.0.1",
+  "description": "Shoot your opponent's ships before he shoots yours",
+  "main": "index.js",
+  "repository": "https://github.com/adrianlafond/ships-game.git",
+  "author": "Adrian Lafond <mail@adrianlafond.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "live-server --no-browser --no-css-inject"
+  },
+  "devDependencies": {
+    "live-server": "1.2.1"
+  }
+}
