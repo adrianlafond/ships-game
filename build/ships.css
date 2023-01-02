@@ -1,0 +1,48 @@
+body {
+  background-color: gray;
+}
+
+.ships {
+  background-color: white;
+  font-family: sans-serif;
+  padding: 1rem;
+}
+
+.ships__game {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ships__board {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0.5rem;
+}
+
+.ships__board-cell {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid black;
+  background-color: powderblue;
+}
+
+.ships__cell-button {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+.ships__cell-button--hit {
+  background-image: url('assets/spiky-explosion.svg');
+}
+.ships__cell-button--miss {
+  background-image: url('assets/water-splash.svg');
+}
+.ships__cell-button-label {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.ships__credit {
+  font-size: 0.8rem;
+}

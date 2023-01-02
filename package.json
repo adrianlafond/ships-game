@@ -7,7 +7,7 @@
   "author": "Adrian Lafond <mail@adrianlafond.com>",
   "license": "MIT",
   "scripts": {
-    "start": "live-server --no-browser --no-css-inject"
+    "start": "live-server --no-browser --no-css-inject && tsc src/*.ts --watch"
   },
   "devDependencies": {
     "live-server": "1.2.1"
