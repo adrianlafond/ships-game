@@ -36,11 +36,11 @@ body {
   height: 100%;
 }
 .ships__cell-ship--left::before {
-  background-image: url('assets/ship-end.svg');
+  background-image: url('assets/patrol-stern.svg');
 }
 .ships__cell-ship--right::before {
-  background-image: url('assets/ship-end.svg');
-  transform: scaleX(-1);
+  background-image: url('assets/patrol-bow.svg');
+  /* transform: scaleX(-1); */
 }
 .ships__cell-ship--down::before {
   background-image: url('assets/ship-end.svg');

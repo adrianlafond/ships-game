@@ -1,0 +1,12 @@
+<svg style="height: 512px; width: 512px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<g>
+<path
+  d="M 512,56
+     Q 212,56 28,112
+     L 28,112, 28,400
+     Q 212,456 512,456
+    "
+  fill="lightslategray" stroke="black" stroke-width="5"
+></path>
+</g>
+</svg>

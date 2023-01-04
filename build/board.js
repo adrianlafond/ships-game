@@ -26,7 +26,7 @@ export class Board {
             from: { row: 5, col: 1 },
             direction: 'down'
         });
-        this.attackHit(3, 1);
+        this.attackHit(5, 1);
     }
     renderBoard(type, size = 10) {
         let table = `<table class="ships__board ships__board--${type}">`;
@@ -69,7 +69,7 @@ export class Board {
     renderShip({ grid, ship, from, direction }) {
         const cellFrom = document.querySelector(`table.ships__board--${grid} tr[data-row="${from.row}"] td[data-col="${from.col}"] button`);
         if (direction === 'left') {
-            const cellTo = document.querySelector(`table.ships__board--${grid} tr[data-row="${from.row}"] td[data-col="${from.col + 2}"] button`);
+            const cellTo = document.querySelector(`table.ships__board--${grid} tr[data-row="${from.row}"] td[data-col="${from.col + 1}"] button`);
             if (cellTo) {
                 const classList = this.removeShipClassNames(cellTo);
                 classList.push(SHIP_BLOCK);
@@ -83,15 +83,15 @@ export class Board {
             classList.push(`${SHIP_BLOCK}--left`);
             cellFrom.className = classList.join(' ');
         }
-        for (let i = from.col + 1; i < from.col + 2; i++) {
-            const cell = document.querySelector(`table.ships__board--${grid} tr[data-row="${from.row}"] td[data-col="${i}"] button`);
-            if (cell) {
-                const classList = this.removeShipClassNames(cell);
-                classList.push(SHIP_BLOCK);
-                classList.push(`${SHIP_BLOCK}--horizontal`);
-                cell.className = classList.join(' ');
-            }
-        }
+        // for (let i = from.col + 1; i < from.col + 2; i++) {
+        //   const cell = document.querySelector(`table.ships__board--${grid} tr[data-row="${from.row}"] td[data-col="${i}"] button`);
+        //   if (cell) {
+        //     const classList = this.removeShipClassNames(cell);
+        //     classList.push(SHIP_BLOCK);
+        //     classList.push(`${SHIP_BLOCK}--horizontal`);
+        //     cell.className = classList.join(' ');
+        //   }
+        // }
     }
     removeAttackClassNames(element) {
         return Array.from(element.classList).filter(item => item !== `${BUTTON_BLOCK}--hit` && item !== `${BUTTON_BLOCK}--miss`);
