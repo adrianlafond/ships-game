@@ -19,24 +19,65 @@ body {
   margin: 0.5rem;
 }
 
-.ships__board-cell {
+.ships__cell {
+  padding: 0;
   width: 3rem;
   height: 3rem;
   border: 1px solid black;
-  background-color: powderblue;
+}
+
+.ships__cell-ship::before,
+.ships__cell-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.ships__cell-ship--left::before {
+  background-image: url('assets/ship-end.svg');
+}
+.ships__cell-ship--right::before {
+  background-image: url('assets/ship-end.svg');
+  transform: scaleX(-1);
+}
+.ships__cell-ship--down::before {
+  background-image: url('assets/ship-end.svg');
+  transform: rotate(90deg);
+}
+.ships__cell-ship--up::before {
+  background-image: url('assets/ship-end.svg');
+  transform: rotate(-90deg);
+}
+.ships__cell-ship--horizontal::before {
+  background-image: url('assets/ship-middle.svg');
+}
+.ships__cell-ship--vertical::before {
+  background-image: url('assets/ship-middle.svg');
+  transform: rotate(90deg);
 }
 
 .ships__cell-button {
+  position: relative;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: powderblue;
+  border: 0 solid transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out;
 }
-.ships__cell-button--hit {
+.ships__cell-button:hover {
+  background-color: skyblue;
+}
+
+.ships__cell-button--hit::after {
   background-image: url('assets/spiky-explosion.svg');
 }
-.ships__cell-button--miss {
+.ships__cell-button--miss::after {
   background-image: url('assets/water-splash.svg');
 }
+
 .ships__cell-button-label {
   position: absolute;
   top: -9999px;
