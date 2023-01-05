@@ -16,15 +16,27 @@ export class Board {
         this.attackMiss(1, 2);
         this.renderShip({
             grid: 'attack',
-            ship: 'destroyer',
+            ship: 'patrol',
             from: { row: 3, col: 1 },
+            direction: 'right'
+        });
+        this.renderShip({
+            grid: 'attack',
+            ship: 'patrol',
+            from: { row: 5, col: 1 },
+            direction: 'down'
+        });
+        this.renderShip({
+            grid: 'attack',
+            ship: 'patrol',
+            from: { row: 3, col: 4 },
             direction: 'left'
         });
         this.renderShip({
             grid: 'attack',
-            ship: 'destroyer',
-            from: { row: 5, col: 1 },
-            direction: 'down'
+            ship: 'patrol',
+            from: { row: 6, col: 3 },
+            direction: 'up'
         });
         this.attackHit(5, 1);
     }
@@ -67,21 +79,10 @@ export class Board {
         }
     }
     renderShip({ grid, ship, from, direction }) {
-        const cellFrom = document.querySelector(`table.ships__board--${grid} tr[data-row="${from.row}"] td[data-col="${from.col}"] button`);
-        if (direction === 'left') {
-            const cellTo = document.querySelector(`table.ships__board--${grid} tr[data-row="${from.row}"] td[data-col="${from.col + 1}"] button`);
-            if (cellTo) {
-                const classList = this.removeShipClassNames(cellTo);
-                classList.push(SHIP_BLOCK);
-                classList.push(`${SHIP_BLOCK}--right`);
-                cellTo.className = classList.join(' ');
-            }
-        }
-        if (cellFrom) {
-            const classList = this.removeShipClassNames(cellFrom);
-            classList.push(SHIP_BLOCK);
-            classList.push(`${SHIP_BLOCK}--left`);
-            cellFrom.className = classList.join(' ');
+        switch (ship) {
+            case 'patrol':
+                this.renderPatrolBoat({ grid, from, direction });
+                break;
         }
         // for (let i = from.col + 1; i < from.col + 2; i++) {
         //   const cell = document.querySelector(`table.ships__board--${grid} tr[data-row="${from.row}"] td[data-col="${i}"] button`);
@@ -92,6 +93,39 @@ export class Board {
         //     cell.className = classList.join(' ');
         //   }
         // }
+    }
+    renderPatrolBoat({ grid, from, direction }) {
+        const cellFrom = document.querySelector(`table.ships__board--${grid} tr[data-row="${from.row}"] td[data-col="${from.col}"] button`);
+        if (cellFrom) {
+            const classList = this.removeShipClassNames(cellFrom);
+            classList.push(SHIP_BLOCK);
+            classList.push(`ships__cell-ship--patrol-${direction}-1`);
+            cellFrom.className = classList.join(' ');
+        }
+        const to = { row: from.row, col: from.col + 1 };
+        switch (direction) {
+            case 'down':
+                to.row = from.row + 1;
+                to.col = from.col;
+                break;
+            case 'left':
+                to.row = from.row;
+                to.col = from.col - 1;
+                break;
+            case 'up':
+                to.row = from.row - 1;
+                to.col = from.col;
+                break;
+            default:
+                break;
+        }
+        const cellTo = document.querySelector(`table.ships__board--${grid} tr[data-row="${to.row}"] td[data-col="${to.col}"] button`);
+        if (cellTo) {
+            const classList = this.removeShipClassNames(cellTo);
+            classList.push(SHIP_BLOCK);
+            classList.push(`ships__cell-ship--patrol-${direction}-2`);
+            cellTo.className = classList.join(' ');
+        }
     }
     removeAttackClassNames(element) {
         return Array.from(element.classList).filter(item => item !== `${BUTTON_BLOCK}--hit` && item !== `${BUTTON_BLOCK}--miss`);

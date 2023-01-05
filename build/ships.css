@@ -58,6 +58,37 @@ body {
   transform: rotate(90deg);
 }
 
+.ships__cell-ship--patrol-right-1::before {
+  background-image: url('assets/patrol-stern.svg');
+}
+.ships__cell-ship--patrol-right-2::before {
+  background-image: url('assets/patrol-bow.svg');
+}
+.ships__cell-ship--patrol-left-1::before {
+  background-image: url('assets/patrol-stern.svg');
+  transform: scaleX(-1);
+}
+.ships__cell-ship--patrol-left-2::before {
+  background-image: url('assets/patrol-bow.svg');
+  transform: scaleX(-1);
+}
+.ships__cell-ship--patrol-down-1::before {
+  background-image: url('assets/patrol-stern.svg');
+  transform: rotate(90deg);
+}
+.ships__cell-ship--patrol-down-2::before {
+  background-image: url('assets/patrol-bow.svg');
+  transform: rotate(90deg);
+}
+.ships__cell-ship--patrol-up-1::before {
+  background-image: url('assets/patrol-stern.svg');
+  transform: rotate(-90deg);
+}
+.ships__cell-ship--patrol-up-2::before {
+  background-image: url('assets/patrol-bow.svg');
+  transform: rotate(-90deg);
+}
+
 .ships__cell-button {
   position: relative;
   width: 100%;
